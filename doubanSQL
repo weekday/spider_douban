@@ -1,0 +1,22 @@
+#coding:utf-8
+
+import peewee
+
+db = peewee.SqliteDatabase('spiderSqlite.db')
+
+class SpiderData(peewee.Model):
+	url = peewee.CharField(max_length=128,verbose_name=u'豆瓣链接')
+	movieName = peewee.CharField(max_length=64,verbose_name=u'电影名称')
+	movieYear = peewee.CharField(max_length=8,verbose_name=u'放映日期')
+	movieAtor = peewee.CharField(max_length=32,verbose_name=u'电影导演')
+	movieScore = peewee.CharField(max_length=8,verbose_name=u'豆瓣评分')
+	movieRank = peewee.CharField(max_length=12,verbose_name=u'豆瓣排名')
+	movieDes = peewee.CharField(max_length = 1000,verbose_name=u'电影描述')
+
+	class Meta:
+		database = db
+
+
+if __name__ == '__main__':
+	spiderdb = SpiderData()
+	spiderdb.create_table()
